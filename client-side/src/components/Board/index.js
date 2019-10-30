@@ -2,24 +2,23 @@ import React from 'react';
 import firebase from '../../Firebase';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
+const getQuery = firebase.firestore().collection('trains');
+
 const options = {
     "idField" : "id"
 }
 
 const Board = (props) => {
-    const [values, loading, error] = useCollectionData(firebase.firestore().collection('trains'), options);
+    const [trains, loading, error] = useCollectionData(getQuery, options);
 
-    console.log(values);
-
-    if (loading) return "loading";
+    if (loading) return "CHOO CHOO! (Train's Coming!)";
     if (error) return error;
-
 
     return (
         <div>
             {
-                values ?
-                    values.map((train) => {
+                trains ?
+                    trains.map((train) => {
                         return <div key={train.id}>{train.name}</div>
                     })
                     :
