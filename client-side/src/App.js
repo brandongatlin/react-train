@@ -1,14 +1,20 @@
 import React from 'react';
 import './App.css';
 
-import Board from './components/Board';
+import { Container } from 'reactstrap';
 
-function App() {
+import Board from './components/Board';
+import TrainInput from './components/TrainInput';
+
+
+
+const App = () => {
 
   return (
-    <div className="App">
+    <Container fluid className="App">
       <Board/>
-    </div>
+      <TrainInput/>
+    </Container>
   );
 }
 
