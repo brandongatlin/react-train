@@ -21,7 +21,7 @@ const TrainInput = (props)=> {
                     trainStart
                 }
                 trainsRef.add(newTrain);
-                
+
                 setTrainName('');
                 setTrainDestination('');
                 setTrainFrequency('');

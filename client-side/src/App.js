@@ -5,6 +5,7 @@ import { Container } from 'reactstrap';
 
 import Board from './components/Board';
 import TrainInput from './components/TrainInput';
+import Clock from './components//Clock';
 
 
 
@@ -12,7 +13,10 @@ const App = () => {
 
   return (
     <Container fluid className="App">
-      <Board/>
+      <Clock />
+      <br/>
+      <Board />
+      <br/>
       <TrainInput/>
     </Container>
   );

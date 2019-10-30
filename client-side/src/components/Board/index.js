@@ -18,14 +18,14 @@ const Board = (props) => {
 
     return (
         
-        <Table>
+        <Table id='train-board' bordered hover striped>
             <thead>
                 <tr>
                     <th>Train</th>
                     <th>Destination</th>
-                    <th>Frequency</th>
+                    <th>Arriving In...</th>
                     <th>Next Arrival</th>
-                    <th>In...</th>
+                    <th>Frequency</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,15 +42,14 @@ const Board = (props) => {
                                         {train.trainDestination}
                                     </td>
                                     <td>
-                                        {train.trainFrequency}
-                                    </td>
-                                    <td>
-                                        {99}
-                                        {/* {train.nextArrival} */}
-                                    </td>
-                                    <td>
-                                        {99}
+                                        {5} Minute(s)
                                         {/* {train.wait} */}
+                                    </td>
+                                    <td>
+                                        {train.trainStart}
+                                    </td>
+                                    <td>
+                                        Every {train.trainFrequency} Minute(s)
                                     </td>
                                 </tr>
                             ) 
@@ -59,10 +58,7 @@ const Board = (props) => {
                         null
                 }
             </tbody>
-        </Table>
-                
-            
-            
+        </Table>    
     );
 }
 
