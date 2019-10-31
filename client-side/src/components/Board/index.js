@@ -32,6 +32,22 @@ const Board = (props) => {
                 {
                     trains ?
                         trains.map((train) => {
+                            const now = new Date().toLocaleTimeString();
+                            const nowColon = now.indexOf(':');
+                            const nowHour = now.substring(0, 2)
+                            const nowMinutes = now.substring(nowColon + 1, nowColon + 3);
+
+                            const startColon = train.trainStart.indexOf(':');
+                            const startHour = train.trainStart.substring(0, startColon);
+                            const startMinutes = train.trainStart.substring(startColon + 1);
+
+                            const minDiff = nowMinutes - startMinutes;
+                            const remainder = minDiff % train.trainFrequency;
+                            const minutesAway = train.trainFrequency - remainder;
+                            const nextMinutes = minutesAway + parseInt(nowMinutes);
+                            train.wait = minutesAway;
+                            train.next = `${nowHour}${nextMinutes}`
+
 
                             return(
                                 <tr key={train.id}>
@@ -42,11 +58,10 @@ const Board = (props) => {
                                         {train.trainDestination}
                                     </td>
                                     <td className={train.wait <= 5 ? "leaving-soon" : null}>
-                                        {5} Minute(s)
-                                        {/* {train.wait} */}
+                                        {train.wait} Minute(s)
                                     </td>
                                     <td>
-                                        {train.trainStart}
+                                        {train.next}
                                     </td>
                                     <td>
                                         Every {train.trainFrequency} Minute(s)
