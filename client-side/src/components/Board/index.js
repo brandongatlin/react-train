@@ -41,7 +41,7 @@ const Board = (props) => {
                                     <td>
                                         {train.trainDestination}
                                     </td>
-                                    <td>
+                                    <td className={train.wait <= 5 ? "leaving-soon" : null}>
                                         {5} Minute(s)
                                         {/* {train.wait} */}
                                     </td>

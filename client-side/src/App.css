@@ -2,3 +2,22 @@
         max-height: 50vh;
         overflow: scroll;
     }
+    
+    #train-input {
+        margin-top: 10px;
+        border-top: 1px solid black;
+        padding: 15px;
+    }
+    
+    #submit {
+        width: 100%;
+    }
+    
+    .leaving-soon {
+        color: red;
+    }
+    
+    h1,
+    h2 {
+        text-align: center;
+    }

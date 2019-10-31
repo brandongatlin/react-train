@@ -5,7 +5,7 @@ import { Container } from 'reactstrap';
 
 import Board from './components/Board';
 import TrainInput from './components/TrainInput';
-import Clock from './components//Clock';
+import Clock from './components/Clock';
 
 
 
