@@ -17,14 +17,15 @@ const Board = (props) => {
     if (error) return error;
 
     return (
-        
-        <Table id='train-board' bordered hover striped>
+        <div id='train-board'>
+
+        <Table  bordered hover striped>
             <thead>
                 <tr>
                     <th>Train</th>
                     <th>Destination</th>
-                    <th>Arriving In...</th>
-                    <th>Next Arrival</th>
+                    <th>Departing In...</th>
+                    <th>Next Departure</th>
                     <th>Frequency</th>
                 </tr>
             </thead>
@@ -38,16 +39,22 @@ const Board = (props) => {
                             const nowMinutes = now.substring(nowColon + 1, nowColon + 3);
 
                             const startColon = train.trainStart.indexOf(':');
-                            const startHour = train.trainStart.substring(0, startColon);
                             const startMinutes = train.trainStart.substring(startColon + 1);
 
                             const minDiff = nowMinutes - startMinutes;
                             const remainder = minDiff % train.trainFrequency;
                             const minutesAway = train.trainFrequency - remainder;
-                            const nextMinutes = minutesAway + parseInt(nowMinutes);
+                            let nextMinutes = minutesAway + parseInt(nowMinutes);
+                            let nextHour = nowHour.replace(':', '');
+                            if(nextMinutes > 59){
+                                nextHour = parseInt(nextHour) + 1;
+                                nextMinutes = nextMinutes - 60;
+                            }
+                            if(nextMinutes == 0){
+                                nextMinutes = "00";
+                            }
                             train.wait = minutesAway;
-                            train.next = `${nowHour}${nextMinutes}`
-
+                            train.next = `${nextHour}:${nextMinutes}`
 
                             return(
                                 <tr key={train.id}>
@@ -73,7 +80,8 @@ const Board = (props) => {
                         null
                 }
             </tbody>
-        </Table>    
+        </Table>
+        </div>
     );
 }
 
